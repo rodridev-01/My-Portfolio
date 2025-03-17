@@ -6,7 +6,7 @@ function compartir() {
     if (navigator.share) {
         navigator.share({
             title: document.title,
-            text: "Visita este portafolio y descubre proyectos increíbles. 🚀",
+            text: "Echa un vistazo a este portfolio.",
             url: window.location.href
         })
         .then(() => console.log("Compartido con éxito"))
