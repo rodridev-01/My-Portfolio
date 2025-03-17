@@ -337,11 +337,19 @@ footer {
     margin-top: 15px;
 }
 
-footer p{
+footer p {
     font-size: 15px;
 }
 
 @media (max-width: 768px) {
+    body {
+        background-attachment: scroll;
+    }
+
+    body::before {
+        background: rgba(0, 0, 0, 0.3); 
+    }
+
     .nav-links {
         display: none;
         flex-direction: column;
@@ -387,6 +395,7 @@ footer p{
     .project img {
         height: 150px;
     }
+
     footer {
         max-width: 100%;
     }
