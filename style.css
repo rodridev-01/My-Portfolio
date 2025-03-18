@@ -448,7 +448,6 @@ footer p {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(90%, 1fr));
         gap: 20px;
-        padding: 40px 0;
     }
 
     .project img {
