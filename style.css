@@ -47,8 +47,8 @@ p {
     top: 5px;
     left: 50%;
     transform: translateX(-50%);
-    width: 95%;
     max-width: 880px;
+    width: 100%;
     background: linear-gradient(135deg, #1e293b, #0f172a);
     padding: 10px 0;
     display: flex;
@@ -736,6 +736,7 @@ footer p {
 
     .header {
         top: 0;
+        max-width:96%;
     }
 
     .portfolio {
