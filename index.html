@@ -11,23 +11,38 @@
 </head>
 
 <body>
-    <header class="steam-header">
+    <!-- HEADER -->
+    <header class="header">
         <div class="container">
             <div class="logo">
                 <i class="fa-solid fa-terminal"></i>
             </div>
-            <nav class="nav-links">
-                <a href="#">Inicio</a>
-                <a href="#">Proyectos</a>
-                <a href="#">Habilidades</a>
-                <a href="#">Contacto</a>
+            <nav class="navbar">
+                <ul class="nav-links">
+                    <li><a href="#experience">Experiencia</a></li>
+                    <li><a href="#projects">Proyectos</a></li>
+                    <li><a href="#education">Educación</a></li>
+                </ul>
+                <button class="btn play-sound"
+                    onclick="window.open('mailto:rph26031994@gmail.com', '_blank')">Contacto</button>
             </nav>
-            <div class="menu-toggle">
-                <i class="fa-solid fa-bars"></i>
+
+            <div class="menu-toggle" id="menu-toggle">
+                <i class="fas fa-bars"></i>
             </div>
         </div>
     </header>
-    
+
+    <div class="side-menu" id="side-menu">
+        <ul>
+            <li><a href="#experience">Experiencia</a></li>
+            <li><a href="#projects">Proyectos</a></li>
+            <li><a href="#education">Educación</a></li>
+            <li><a href="mailto:rph26031994@gmail.com">Contacto</a></li>
+        </ul>
+    </div>
+    <div class="overlay" id="overlay"></div>
+
     <div class="portfolio">
         <div class="profile">
             <div class="profile-card">
@@ -44,7 +59,8 @@
                         <button class="btn btn-cv"
                             onclick="window.open('https://drive.google.com/file/d/1sZfI2-5mSsPMg1uXJKfBwH-gFda5mrMs/view?usp=sharing', '_blank')"><i
                                 class="fa-solid fa-file"></i> CV</button>
-                        <button class="btn btn-share" onclick="compartir()"><i class="fa-solid fa-share-nodes"></i> Compartir</button>
+                        <button class="btn btn-share" onclick="compartir()"><i class="fa-solid fa-share-nodes"></i>
+                            Compartir</button>
                     </div>
                 </div>
             </div>
@@ -53,30 +69,27 @@
             </div>
         </div>
 
-<section class="experience">
-    <div class="container">
-        <h2>Experiencia</h2>
-        <div class="experience-list">
-            <div class="exp-entry">
-                <div class="exp-info">
-                    <h3>Desarrollador de Software</h3>
-                    <p>Municipalidad Distrital de Salas</p>
+        <section class="experience" id="experience">
+            <div class="container">
+                <h2>Experiencia</h2>
+                <div class="experience-list">
+                    <div class="exp-entry">
+                        <div class="exp-info">
+                            <h3>Desarrollador de Software</h3>
+                            <p>Municipalidad Distrital de Salas</p>
+                        </div>
+                        <span class="exp-date">2022 - Presente</span>
+                    </div>
+                    <div class="exp-entry">
+                        <div class="exp-info">
+                            <h3>Desarrollador Frontend</h3>
+                            <p>IESTP José Pardo</p>
+                        </div>
+                        <span class="exp-date">May - Dic 2024</span>
+                    </div>
                 </div>
-                <span class="exp-date">2022 - Presente</span>
             </div>
-            <div class="exp-entry">
-                <div class="exp-info">
-                    <h3>Desarrollador Frontend</h3>
-                    <p>IESTP José Pardo</p>
-                </div>
-                <span class="exp-date">May - Dic 2024</span>
-            </div>
-        </div>
-    </div>
-</section>
-
-        
-        
+        </section>
 
         <section class="languages">
             <div class="container">
@@ -90,29 +103,28 @@
                     <li><i class="devicon-python-plain colored"></i> Python</li>
                     <li><i class="devicon-csharp-plain colored"></i> C#</li>
                     <li><i class="devicon-markdown-original"></i> Markdown</li>
-                
+
                     <!-- Frameworks y librerías -->
                     <li><i class="devicon-react-original colored"></i> React</li>
                     <li><i class="devicon-astro-plain colored"></i> Astro</li>
                     <li><i class="devicon-tailwindcss-plain colored"></i> Tailwind CSS</li>
                     <li><i class="devicon-nodejs-plain colored"></i> Node.js</li>
-                
+
                     <!-- Bases de datos -->
                     <li><i class="devicon-mongodb-plain colored"></i> MongoDB</li>
                     <li><i class="devicon-mysql-plain colored"></i> MySQL</li>
                     <li><i class="devicon-sqlite-plain colored"></i> SQLite</li>
                     <li><i class="devicon-microsoftsqlserver-plain colored"></i> SQL Server</li>
-                
+
                     <!-- Herramientas y tecnologías complementarias -->
                     <li><i class="devicon-figma-plain colored"></i> Figma</li>
                     <li><i class="devicon-git-plain colored"></i> Git</li>
                 </ul>
-                
+
             </div>
         </section>
-        
 
-        <section class="projects">
+        <section class="projects" id="projects">
             <div class="container">
                 <h2>Proyectos</h2>
                 <div class="project-grid">
@@ -216,7 +228,7 @@
             </div>
         </section>
 
-        <section class="education">
+        <section class="education" id="education">
             <div class="container">
                 <h2>Formación Académica</h2>
                 <div class="card" onclick="toggleCard(this)">
@@ -226,10 +238,11 @@
                         <div class="card-details">
                             <p><strong>Institución:</strong> IESTP José Pardo</p>
                             <p><strong>Periodo:</strong> 2020 - 2024</p>
-                            <p>Especialización en desarrollo de software, bases de datos y gestión de sistemas informáticos.</p>
+                            <p>Especialización en desarrollo de software, bases de datos y gestión de sistemas
+                                informáticos.</p>
                         </div>
                     </div>
-                </div>       
+                </div>
                 <div class="card" onclick="toggleCard(this)">
                     <i class="fa-solid fa-graduation-cap"></i>
                     <div class="card-content">
@@ -237,10 +250,11 @@
                         <div class="card-details">
                             <p><strong>Institución:</strong> Universidad Privada del Norte (UPN)</p>
                             <p><strong>Estado:</strong> En curso</p>
-                            <p>Formación en arquitectura de software, inteligencia artificial y gestión de proyectos TI.</p>
+                            <p>Formación en arquitectura de software, inteligencia artificial y gestión de proyectos TI.
+                            </p>
                         </div>
                     </div>
-                </div>       
+                </div>
                 <div class="card" onclick="toggleCard(this)">
                     <i class="fa-solid fa-language"></i>
                     <div class="card-content">
@@ -251,23 +265,25 @@
                             <p>Desarrollo de habilidades en comunicación y comprensión del inglés técnico.</p>
                         </div>
                     </div>
-                </div>    
+                </div>
             </div>
         </section>
-        
-      
+
         <section class="contact">
             <div class="container">
                 <h2>Redes</h2>
                 <ul>
-                    <li><i class="fa-brands fa-github"></i> <a href="https://github.com/rodridev-01" target="_blank">GitHub</a></li>
-                    <li><i class="fa-brands fa-instagram"></i> <a href="https://www.instagram.com/rodrigou.py" target="_blank">Instagram</a></li>
-                    <li><i class="fa-brands fa-square-x-twitter"></i> <a href="https://x.com/rodridev01" target="_blank">X</a></li>
-                    <li><i class="fa-brands fa-linkedin"></i> <a href="https://www.linkedin.com/in/rodridev26" target="_blank">LinkedIn</a></li>
+                    <li><i class="fa-brands fa-github"></i> <a href="https://github.com/rodridev-01"
+                            target="_blank">GitHub</a></li>
+                    <li><i class="fa-brands fa-instagram"></i> <a href="https://www.instagram.com/rodrigou.py"
+                            target="_blank">Instagram</a></li>
+                    <li><i class="fa-brands fa-square-x-twitter"></i> <a href="https://x.com/rodridev01"
+                            target="_blank">X</a></li>
+                    <li><i class="fa-brands fa-linkedin"></i> <a href="https://www.linkedin.com/in/rodridev26"
+                            target="_blank">LinkedIn</a></li>
                 </ul>
             </div>
         </section>
-        
     </div>
     <footer>
         <p>Casi todos los derechos reservados ©2025 rodridev</p>
