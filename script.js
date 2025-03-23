@@ -15,3 +15,16 @@ function compartir() {
         alert("Tu navegador no admite la función de compartir.");
     }
 }
+
+function toggleCard(card) {
+    let openCard = document.querySelector(".card.active");
+    if (openCard && openCard !== card) {
+        openCard.classList.remove("active");
+        openCard.querySelector(".expand-icon").textContent = "+";
+    }
+
+    card.classList.toggle("active");
+
+    let icon = card.querySelector(".expand-icon");
+    icon.textContent = card.classList.contains("active") ? "−" : "+";
+}

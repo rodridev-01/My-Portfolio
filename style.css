@@ -146,7 +146,6 @@ p {
     justify-content: flex-start;
 }
 
-
 /* Nombre */
 .profile-name {
     font-size: 26px;
@@ -216,6 +215,54 @@ p {
     color: #b0bec5;
     margin-top: 8px;
 }
+
+/* Experiencia */
+.experience-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin: 0 auto;
+}
+
+.exp-entry {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #1b2838;
+    padding: 8px 12px;
+    border-radius: 5px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.exp-entry:nth-of-type(odd) {
+    background: linear-gradient(135deg, #002849 0%, #004577 100%);
+}
+
+.exp-entry:nth-of-type(even) {
+    background: linear-gradient(135deg, #222222 0%, #313131 100%);
+}
+
+
+.exp-info h3 {
+    color: white;
+    font-size: 16px;
+    margin: 0;
+}
+
+.exp-info p {
+    color: #dcdcdc;
+    font-size: 14px;
+    margin: 3px 0 0;
+}
+
+.exp-date {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 5px 10px;
+    border-radius: 4px;
+    color: white;
+    font-size: 13px;
+}
+
 
 /* Habilidades */
 .skills ul {
@@ -386,14 +433,105 @@ p {
     color: white;
 }
 
+/* Tarjetas */
+.card {
+    background: #333;
+    border-radius: 5px;
+    padding: 8px 12px;
+    text-align: left;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center; 
+    gap: 15px;
+    cursor: pointer;
+}
+
+/* Colores diferentes para cada tarjeta */
+.card:nth-of-type(1) { background: #1e2d3f; border-left: 5px solid #66c0f4; }
+.card:nth-of-type(2) { background: #20242e; border-left: 5px solid #FBC02D; }
+.card:nth-of-type(3) { background: #1b2838; border-left: 5px solid #D32F2F;}
+
+.card:nth-of-type(1) i { 
+    color: #66c0f4;  
+}
+
+.card:nth-of-type(2) i { 
+    color: #FBC02D;  
+}
+
+.card:nth-of-type(3) i { 
+    color: #D32F2F; 
+}
+
+
+.card i {
+    font-size: 24px;
+    color: #ffffff;
+    min-width: 40px;
+    display: flex;
+    align-items: center; 
+    justify-content: center;
+}
+
+.card-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-grow: 1;
+}
+
+.card h3 {
+    font-size: 16px;
+    margin: 0;
+}
+
+.card p {
+    font-size: 14px;
+    margin: 3px 0;
+    opacity: 0.8;
+}
+
+.card span {
+    font-size: 14px;
+    font-weight: bold;
+    display: block;
+    margin-top: 6px;
+}
+
+.card-details {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-out, opacity 0.4s ease-out;
+    opacity: 0;
+}
+
+.card.active .card-details {
+    max-height: 200px; 
+    opacity: 1;
+}
+
+.expand-icon {
+    float: right;
+    font-size: 18px;
+    font-weight: bold;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+.card.open .expand-icon {
+    transform: rotate(45deg); 
+}
+
+
 /* Pie de página */
 footer {
     max-width: 840px;
     margin: 0 auto;
-    background: linear-gradient(135deg, #1e293b, #0f172a);
+    background: linear-gradient(180deg, #0f172a, #0b111f);
     text-align: center;
     padding: 4px 20px;
-    margin-top: 15px;
+    border-top: 1px solid #333;
 }
 
 footer p {
@@ -452,6 +590,26 @@ footer p {
 
     .project img {
         height: 150px;
+    }
+
+    .exp-entry {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .exp-date {
+        margin-top: 5px;
+        align-self: flex-end; 
+    }
+
+    .card i {
+        font-size: 28px;
+        min-width: auto;
+    }
+
+    .expand-icon {
+        font-size: 12px;
+        margin-left: 0;
     }
 
     footer {

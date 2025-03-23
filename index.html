@@ -27,7 +27,7 @@
             </div>
         </div>
     </header>
-
+    
     <div class="portfolio">
         <div class="profile">
             <div class="profile-card">
@@ -53,20 +53,30 @@
             </div>
         </div>
 
-        <section class="skills">
-            <div class="container">
-                <h2>Habilidades</h2>
-                <ul>
-                    <li><i class="fa-solid fa-code"></i> Desarrollo Frontend</li>
-                    <li><i class="fa-solid fa-laptop-code"></i>Escritorio</li>
-                    <li><i class="fa-solid fa-palette"></i> UI/UX Design</li>
-                    <li><i class="fa-solid fa-wrench"></i> Optimización</li>
-                    <li><i class="fa-solid fa-users"></i> Trabajo en Equipo</li>
-                    <li><i class="fa-solid fa-code-branch"></i> Control de Versiones (Git)</li>
-                    <li><i class="fa-solid fa-terminal"></i> Automatización y Build Tools</li>
-                </ul>
+<section class="experience">
+    <div class="container">
+        <h2>Experiencia</h2>
+        <div class="experience-list">
+            <div class="exp-entry">
+                <div class="exp-info">
+                    <h3>Desarrollador de Software</h3>
+                    <p>Municipalidad Distrital de Salas</p>
+                </div>
+                <span class="exp-date">2022 - Presente</span>
             </div>
-        </section>
+            <div class="exp-entry">
+                <div class="exp-info">
+                    <h3>Desarrollador Frontend</h3>
+                    <p>IESTP José Pardo</p>
+                </div>
+                <span class="exp-date">May - Dic 2024</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+        
+        
 
         <section class="languages">
             <div class="container">
@@ -206,6 +216,46 @@
             </div>
         </section>
 
+        <section class="education">
+            <div class="container">
+                <h2>Formación Académica</h2>
+                <div class="card" onclick="toggleCard(this)">
+                    <i class="fa-solid fa-laptop-code"></i>
+                    <div class="card-content">
+                        <h3>Técnico en Computación e Informática <span class="expand-icon">+</span></h3>
+                        <div class="card-details">
+                            <p><strong>Institución:</strong> IESTP José Pardo</p>
+                            <p><strong>Periodo:</strong> 2020 - 2024</p>
+                            <p>Especialización en desarrollo de software, bases de datos y gestión de sistemas informáticos.</p>
+                        </div>
+                    </div>
+                </div>       
+                <div class="card" onclick="toggleCard(this)">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                    <div class="card-content">
+                        <h3>Ingeniería de Sistemas Computacionales <span class="expand-icon">+</span></h3>
+                        <div class="card-details">
+                            <p><strong>Institución:</strong> Universidad Privada del Norte (UPN)</p>
+                            <p><strong>Estado:</strong> En curso</p>
+                            <p>Formación en arquitectura de software, inteligencia artificial y gestión de proyectos TI.</p>
+                        </div>
+                    </div>
+                </div>       
+                <div class="card" onclick="toggleCard(this)">
+                    <i class="fa-solid fa-language"></i>
+                    <div class="card-content">
+                        <h3>Inglés - Intermediate 1 <span class="expand-icon">+</span></h3>
+                        <div class="card-details">
+                            <p><strong>Institución:</strong> ICPNA</p>
+                            <p><strong>Nivel:</strong> A2 - B1</p>
+                            <p>Desarrollo de habilidades en comunicación y comprensión del inglés técnico.</p>
+                        </div>
+                    </div>
+                </div>    
+            </div>
+        </section>
+        
+      
         <section class="contact">
             <div class="container">
                 <h2>Redes</h2>
@@ -218,7 +268,6 @@
             </div>
         </section>
         
-
     </div>
     <footer>
         <p>Casi todos los derechos reservados ©2025 rodridev</p>
