@@ -208,7 +208,7 @@
         let premios = [
             "❌ Nada",
             "🎨 Custom Draw",
-            "🏆 Draw", "🏆 Draw", "🏆 Draw",
+            "🖌️ Draw", "🖌️ Draw", "🖌️ Draw",
             "🌐 Website Free",
             "🎲 Random Gift", "🎲 Random Gift", "🎲 Random Gift", "🎲 Random Gift", "🎲 Random Gift", "🎲 Random Gift"
         ];
@@ -253,7 +253,12 @@
             }
         }
 
+        let puedeGirar = true; // Controla si la ruleta puede girar
+
         function girarRuleta() {
+            if (!puedeGirar) return; // Evita que se gire más de una vez
+
+            puedeGirar = false; // Bloquea giros adicionales
             document.getElementById("resultado").innerText = "";
             document.getElementById("reclamar").style.display = "none";
             winSound.pause();
