@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ruleta de Premios</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=Exo:ital,wght@0,100..900;1,100..900&display=swap');
+
+        body {
+            font-family: "Exo", sans-serif;
+            background: url('patron.jpg') repeat;
+            background-size: 749px 404px;
+            background-attachment: fixed;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+            color: white;
+            text-align: center;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: -1;
+        }
+
+        .ruleta-container {
+            position: relative;
+            width: 400px;
+            height: 400px;
+        }
+
+        .indicador {
+            position: absolute;
+            top: 50%;
+            right: -25px;
+            transform: translateY(-50%) rotate(270deg);
+            width: 30px;
+            height: 30px;
+            background: red;
+            clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+            z-index: 2;
+        }
+
+        canvas {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
+        }
+
+        .boton-girar {
+            margin-top: 20px;
+            padding: 8px 12px;
+            font-size: 18px;
+            background: #00b7ff;
+            color: black;
+            font-size: bold;
+            border: none;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .boton-girar:hover {
+            background: #ffdb4d;
+            transform: scale(1.1);
+        }
+
+        .easter-egg-title {
+            text-align: center;
+            font-size: 26px;
+            margin-bottom: 15px;
+            font-weight: bold;
+            color: #ffffff;
+            text-shadow: 2px 2px 5px rgba(255, 255, 255, 0.3);
+            padding: 12px 20px;
+            border-radius: 10px;
+            display: inline-block;
+        }
+
+        .easter-egg-title span {
+            display: block;
+            font-size: 18px;
+            color: #ffcc00;
+            margin-top: 5px;
+            font-weight: normal;
+            text-shadow: none;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                height: auto;
+                padding: 20px;
+            }
+
+            .ruleta-container {
+                width: 300px;
+                height: 300px;
+            }
+
+            .indicador {
+                right: -15px;
+                width: 20px;
+                height: 20px;
+            }
+
+            canvas {
+                box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+            }
+
+            .boton-girar {
+                font-size: 16px;
+                padding: 10px 20px;
+            }
+
+            .easter-egg-title {
+                font-size: 22px;
+                padding: 10px 15px;
+            }
+
+            .easter-egg-title span {
+                font-size: 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .ruleta-container {
+                width: 250px;
+                height: 250px;
+            }
+
+            .indicador {
+                right: -10px;
+                width: 15px;
+                height: 15px;
+            }
+
+            .boton-girar {
+                font-size: 14px;
+                padding: 8px 16px;
+            }
+
+            .easter-egg-title {
+                font-size: 20px;
+                padding: 8px 12px;
+            }
+
+            .easter-egg-title span {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h2 class="easter-egg-title">
+        🎡 ¡Easter Egg! 🎁
+        <span>(Gira la ruleta y descubre tu premio... o la nada absoluta)</span>
+    </h2>
+
+
+    <div class="ruleta-container">
+        <div class="indicador"></div>
+        <canvas id="ruleta" width="400" height="400"></canvas>
+    </div>
+    <button class="boton-girar" onclick="girarRuleta()">🎰 Girar Ruleta</button>
+    <p id="resultado" style="margin-top: 15px; font-size: 18px;"></p>
+    <button id="reclamar" class="boton-girar" style="display: none;" onclick="reclamarPremio()">🎁 Reclamar
+        Premio</button>
+
+    <audio id="spinSound" src="dsad" preload="auto"></audio>
+    <audio id="winSound" src="dsad" preload="auto"></audio>
+    <audio id="loseSound" src="https://www.fesliyanstudios.cdsadom/play-mp3/6391" preload="auto"></audio>
+
+
+
+
+    <script>
+        // Función para aleatorizar dos arreglos en paralelo
+        function shuffleArrays(arr1, arr2) {
+            let combined = arr1.map((value, index) => ({ value, color: arr2[index] }));
+            combined.sort(() => Math.random() - 0.5);
+
+            for (let i = 0; i < arr1.length; i++) {
+                arr1[i] = combined[i].value;
+                arr2[i] = combined[i].color;
+            }
+        }
+
+        // Definir premios y colores
+        let premios = [
+            "❌ Nada",
+            "🎨 Custom Draw",
+            "🏆 Draw", "🏆 Draw", "🏆 Draw",
+            "🌐 Website Free",
+            "🎲 Random Gift", "🎲 Random Gift", "🎲 Random Gift", "🎲 Random Gift", "🎲 Random Gift", "🎲 Random Gift"
+        ];
+
+        let colores = [
+            "#B22222", // ❌ Nada (Rojo oscuro)
+            "#E67E22", // 🎨 Custom Draw (Naranja intenso)
+            "#F1C40F", "#D4AC0D", "#B7950B", // 🏆 Draw (Amarillos dorados)
+            "#2E8B57", // 🌐 Website Free (Verde esmeralda)
+            "#1E90FF", "#2980B9", "#2980B9", "#2980B9", "#2980B9", "#2980B9" // 🎲 Random Gift (Azules profundos)
+        ];
+
+
+        // Aleatorizar premios y colores en paralelo
+        shuffleArrays(premios, colores);
+
+        let canvas = document.getElementById("ruleta");
+        let ctx = canvas.getContext("2d");
+        let anguloInicio = 0;
+        let premioGanado = "";
+        let spinSound = document.getElementById("spinSound");
+        let winSound = document.getElementById("winSound");
+        let loseSound = document.getElementById("loseSound");
+
+        function dibujarRuleta() {
+            let anguloPremios = (2 * Math.PI) / premios.length;
+            for (let i = 0; i < premios.length; i++) {
+                let angulo = i * anguloPremios;
+                ctx.beginPath();
+                ctx.moveTo(200, 200);
+                ctx.arc(200, 200, 200, angulo, angulo + anguloPremios);
+                ctx.fillStyle = colores[i];
+                ctx.fill();
+                ctx.stroke();
+                ctx.save();
+                ctx.translate(200, 200);
+                ctx.rotate(angulo + anguloPremios / 2);
+                ctx.fillStyle = "white";
+                ctx.font = "16px Arial";
+                ctx.fillText(premios[i], 80, 5);
+                ctx.restore();
+            }
+        }
+
+        function girarRuleta() {
+            document.getElementById("resultado").innerText = "";
+            document.getElementById("reclamar").style.display = "none";
+            winSound.pause();
+            loseSound.pause();
+            winSound.currentTime = 0;
+            loseSound.currentTime = 0;
+
+            let vueltas = Math.floor(Math.random() * 5) + 5;
+            let indicePremio = Math.floor(Math.random() * premios.length);
+            premioGanado = premios[indicePremio];
+            let anguloPremios = (2 * Math.PI) / premios.length;
+            let anguloFinal = vueltas * 2 * Math.PI - (indicePremio * anguloPremios) - (anguloPremios / 2);
+            let tiempo = 3000;
+            let incremento = (anguloFinal - anguloInicio) / (tiempo / 16);
+
+            spinSound.currentTime = 0;
+            spinSound.play();
+
+            let intervalo = setInterval(() => {
+                anguloInicio += incremento;
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                ctx.save();
+                ctx.translate(200, 200);
+                ctx.rotate(anguloInicio);
+                ctx.translate(-200, -200);
+                dibujarRuleta();
+                ctx.restore();
+            }, 16);
+
+            setTimeout(() => {
+                clearInterval(intervalo);
+                spinSound.pause();
+                document.getElementById("resultado").innerText = "Ganaste: " + premioGanado;
+                if (premioGanado !== "❌ Nada") {
+                    winSound.play();
+                    document.getElementById("reclamar").style.display = "block";
+                } else {
+                    loseSound.play();
+                }
+            }, tiempo);
+        }
+
+        function reclamarPremio() {
+            let mensaje = encodeURIComponent("¡Hola! Acabo de ganar " + premioGanado + " en la ruleta.");
+            window.open("https://wa.me/938790848?text=" + mensaje, "_blank");
+        }
+
+        dibujarRuleta();
+    </script>
+</body>
+
+</html>
