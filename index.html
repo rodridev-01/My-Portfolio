@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="eS">
+<html lang="eS" data-theme="dark">
 
 <head>
     <meta charset="UTF-8">
@@ -52,6 +52,9 @@
                 </ul>
                 <button class="btn play-sound"
                     onclick="window.open('mailto:rph26031994@gmail.com', '_blank')">Contacto</button>
+                <button class="theme-toggle" id="theme-toggle">
+                    <i class="fas fa-sun"></i>
+                </button>
             </nav>
 
             <div class="menu-toggle" id="menu-toggle">
@@ -61,12 +64,16 @@
     </header>
 
     <div class="side-menu" id="side-menu">
-        <ul>
+        <ul class="side-menu-main">
             <li><a href="#experience"><i class="fas fa-briefcase"></i> Experiencia</a></li>
             <li><a href="#projects"><i class="fas fa-code"></i> Proyectos</a></li>
             <li><a href="#education"><i class="fas fa-graduation-cap"></i> Educación</a></li>
             <li><a href="mailto:rph26031994@gmail.com"><i class="fas fa-envelope"></i> Contacto</a></li>
+            <li><button class="theme-toggle" id="theme-toggle-mobile">
+                <i class="fas fa-sun"></i>
+            </button></li>
         </ul>
+
     </div>
     <div class="overlay" id="overlay"></div>
 
@@ -74,7 +81,7 @@
         <div class="profile">
             <div class="profile-card">
                 <div class="profile-image">
-                    <img src="profiler.jpg" alt="Profile">
+                    <img src="profile.png" alt="Profile">
                 </div>
                 <div class="profile-info">
                     <h2 class="profile-name">Rodrigo Peña</h2>
@@ -92,7 +99,7 @@
                 </div>
             </div>
             <div class="profile-description">
-                <p>"No es un bug, es una función sorpresa." </p>
+                <p>"It's not a bug, it's a feature." </p>
             </div>
         </div>
 
@@ -294,7 +301,7 @@
                 <div class="card" onclick="toggleCard(this)">
                     <i class="fa-solid fa-language"></i>
                     <div class="card-content">
-                        <h3>Inglés - Intermediate 1 <span class="expand-icon">+</span></h3>
+                        <h3>Inglés - Intermediate 2 <span class="expand-icon">+</span></h3>
                         <div class="card-details">
                             <p><strong>Institución:</strong> ICPNA</p>
                             <p><strong>Nivel:</strong> A2 - B1</p>
@@ -325,7 +332,7 @@
         </section>
     </div>
     <footer>
-        <p>Casi todos los derechos reservados ©2025 <a href="ruleta.html" style="color: #ffcc00; text-decoration: none; font-weight: bold;">rodridev</a></p>
+        <p>Casi todos los derechos reservados 2025 <a href="ruleta.html" style="color: #ffcc00; text-decoration: none; font-weight: bold;">rodridev</a></p>
     </footer>
     <script src="script.js"></script>
 </body>
