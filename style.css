@@ -11,7 +11,7 @@
     --header-bg: linear-gradient(135deg, #1e293b, #0f172a);
     --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
     --overlay-color: rgba(0, 0, 0, 0.5);
-    --bg-background: rgba(15, 23, 42, 0.8);
+    --bg-background: rgba(15, 23, 42, 0.9);
 }
 
 :root[data-theme="light"] {
@@ -783,7 +783,7 @@ footer a {
 
 @media (max-width: 768px) {
     body {
-        background-attachment: scroll;
+        background-attachment: fixed;
     }
 
     .navbar {
