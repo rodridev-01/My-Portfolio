@@ -31,7 +31,7 @@
 /* Estilos generales */
 body {
     font-family: "Exo", sans-serif;
-    background: url('patron.jpg') repeat;
+    background: url('/Images/patron.webp') repeat;
     background-size: 749px 404px;
     background-attachment: fixed;
     background-position: center;
@@ -73,7 +73,7 @@ p {
 
 .header {
     position: fixed;
-    top: 5px;
+    top: 20px;
     left: 50%;
     transform: translateX(-50%);
     max-width: 880px;
@@ -86,7 +86,6 @@ p {
     z-index: 1000;
     margin: 0 auto;
     border-radius: 4px;
-    box-shadow: var(--card-shadow);
 }
 
 .header.hidden {
@@ -270,7 +269,6 @@ p {
     height: 130px;
     object-fit: cover;
     border: #b0bec5 1px solid;
-    border-radius: 5px;
 }
 
 /* Información del perfil */
