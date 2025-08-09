@@ -32,29 +32,6 @@ function updateThemeIcons(theme) {
     });
 }
 
-// Menú móvil
-const menuToggle = document.getElementById('menu-toggle');
-const sideMenu = document.getElementById('side-menu');
-const overlay = document.getElementById('overlay');
-
-menuToggle.addEventListener('click', () => {
-    sideMenu.style.left = '0';
-    overlay.style.display = 'block';
-});
-
-overlay.addEventListener('click', () => {
-    sideMenu.style.left = '-450px';
-    overlay.style.display = 'none';
-});
-
-// Cerrar menú al hacer clic en un enlace
-document.querySelectorAll('.side-menu a').forEach(link => {
-    link.addEventListener('click', () => {
-        sideMenu.style.left = '-450px';
-        overlay.style.display = 'none';
-    });
-});
-
 // Ocultar/mostrar header al hacer scroll
 let lastScrollTop = 0;
 const header = document.querySelector('.header');
